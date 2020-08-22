@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody rigidBody;
     [SerializeField] float thrust;
     [SerializeField] float rotationthrust;
     // Start is called before the first frame update
     void Start()
     {
         print("love");
-        rigidbody = GetComponent<Rigidbody>(); 
+        rigidBody = GetComponent<Rigidbody>(); 
     }
 
     // Update is called once per frame
     void Update()
-    {if(Input.GetKey(KeyCode.Space))
-        {
-            rigidbody.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
-        }
-        {
+    {
+              
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Rotate(-Vector3.forward * rotationthrust * Time.deltaTime);
@@ -29,6 +26,11 @@ public class Rocket : MonoBehaviour
             {
                 transform.Rotate(Vector3.forward * rotationthrust * Time.deltaTime);
             }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rigidBody.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
         }
+
     }
 }
